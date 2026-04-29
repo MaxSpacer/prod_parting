@@ -4,7 +4,7 @@ from usb_datatmatrix_scanner.scanner import barcode_reader
 import os
 import re
 import csv
-import libusb_package
+# import libusb_package
 import usb
 # from django.conf import settings
 from django.core.management.base import BaseCommand, CommandError
@@ -36,14 +36,14 @@ class Command(BaseCommand):
         #     logging.debug('Keyboard interrupt')
         # except Exception as err:
         #     logging.error(err)
-        for dev in libusb_package.find(find_all=True):
-            print(dev)
+        # for dev in libusb_package.find(find_all=True):
+        #     print(dev)
         # os.environ['PYUSB_DEBUG'] = 'debug'
         # import usb.core
         # usb.core.find()
         # # with pure PyUSB
-        # for dev in usb.core.find(find_all=True):
-        #     print(dev)
+        for dev in usb.core.find(find_all=True):
+            print(dev)
             
             
         self.stdout.write('STOP\n')
