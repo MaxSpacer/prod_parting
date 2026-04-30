@@ -161,9 +161,9 @@ assert ep is not None, "Endpoint for USB device not found. Something is wrong."
 line=''
 while True:
     try:
-        print('dss')
         # Wait up to 0.5 seconds for data. 500 = 0.5 second timeout.
         data=ep.read(1000, 500)
+        print(data)
         ch=hid2ascii(data)
         line += ch
         print('test\n', line)
