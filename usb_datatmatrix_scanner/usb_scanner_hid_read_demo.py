@@ -36,7 +36,7 @@ such as 55-barcode-scanner.rules with these contents:
     (TBD)
 """
 
-
+os.environ['PYUSB_DEBUG'] = 'debug'
 def hid2ascii(lst):
     """The USB HID device sends an 8-byte code for every character. This
     routine converts the HID code to an ASCII character.
