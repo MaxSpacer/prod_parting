@@ -146,7 +146,7 @@ if dev.is_kernel_driver_active(0):
 
 # get an endpoint instance
 cfg=dev.get_active_configuration()
-intf=cfg[(0, 1)]
+intf=cfg[(1, 0)]
 
 ep=usb.util.find_descriptor(
     intf,
