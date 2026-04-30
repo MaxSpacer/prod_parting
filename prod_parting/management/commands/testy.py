@@ -24,27 +24,26 @@ class Command(BaseCommand):
         else:
             self.stdout.write('START\n')
 
-        # import logging
+            import logging
 
-        # # if __name__ == '__main__':
-    
-        # try:
-        #     while True:
-        #         upcnumber = barcode_reader()
-        #         print(upcnumber,  'test')
-        # except KeyboardInterrupt:
-        #     logging.debug('Keyboard interrupt')
-        # except Exception as err:
-        #     logging.error(err)
-        # for dev in libusb_package.find(find_all=True):
-        #     print(dev)
-        # os.environ['PYUSB_DEBUG'] = 'debug'
+            # if __name__ == '__main__':
+        
+            try:
+                while True:
+                    upcnumber = barcode_reader()
+                    print(upcnumber,  'test')
+            except KeyboardInterrupt:
+                logging.debug('Keyboard interrupt')
+            except Exception as err:
+                logging.error(err)
+
+            # os.environ['PYUSB_DEBUG'] = 'debug'
         # import usb.core
         # usb.core.find()
         # # with pure PyUSB
-        for dev in usb.core.find(find_all=True):
-            print('dev')
-            print(dev)
+        # for dev in usb.core.find(find_all=True):
+        #     print('dev')
+        #     print(dev)
             
             
         self.stdout.write('STOP\n')
