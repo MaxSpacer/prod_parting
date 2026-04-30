@@ -152,7 +152,7 @@ ep=usb.util.find_descriptor(
     intf,
     # match the first IN endpoint
     custom_match=lambda e:
-        usb.util.endpoint_direction(e.bEndpointAddress) ==
+        usb.util.endpoint_direction(0x82) ==
         usb.util.ENDPOINT_IN)
 
 assert ep is not None, "Endpoint for USB device not found. Something is wrong."
@@ -163,7 +163,7 @@ line=''
 while True:
     try:
         # Wait up to 0.5 seconds for data. 500 = 0.5 second timeout.
-        data=ep.read(0x82,1000, 500)
+        data=ep.read(1000, 500)
         print(data)
         ch=hid2ascii(data)
         line += ch
