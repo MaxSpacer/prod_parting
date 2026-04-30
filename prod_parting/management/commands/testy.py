@@ -43,6 +43,7 @@ class Command(BaseCommand):
         # usb.core.find()
         # # with pure PyUSB
         for dev in usb.core.find(find_all=True):
+            print('dev')
             print(dev)
             
             
