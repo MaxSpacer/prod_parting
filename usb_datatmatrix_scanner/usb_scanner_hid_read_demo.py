@@ -127,7 +127,6 @@ def hid2ascii(lst):
     return conv_table[ch][shift]
 
 
-
 # Find our device using the VID (Vendor ID) and PID (Product ID) 1d82:5ca0
 dev=usb.core.find(idVendor=0x1d82, idProduct=0x5ca0)
 if dev is None:
@@ -142,7 +141,7 @@ if dev.is_kernel_driver_active(0):
 
 # set the active configuration. With no arguments, the first
 # configuration will be the active one
-dev.set_configuration()
+# dev.set_configuration()
 
 # get an endpoint instance
 cfg=dev.get_active_configuration()
