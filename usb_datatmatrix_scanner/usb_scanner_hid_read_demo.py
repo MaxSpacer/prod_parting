@@ -165,6 +165,7 @@ while True:
         data=ep.read(1000, 500)
         ch=hid2ascii(data)
         line += ch
+        print('test\n', line)
     except KeyboardInterrupt:
         print("Stopping program")
         dev.reset()
