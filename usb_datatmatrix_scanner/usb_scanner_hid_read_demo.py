@@ -1,5 +1,6 @@
 import usb.core
 import usb.util
+import os
 
 """
 This uses the pyusb module to read the popular LS2208 USB barcode
