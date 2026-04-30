@@ -148,12 +148,13 @@ if dev.is_kernel_driver_active(0):
 cfg=dev.get_active_configuration()
 intf=cfg[(1, 0)]
 print(usb.util.ENDPOINT_IN)
-ep=usb.util.find_descriptor(
-    intf,
-    # match the first IN endpoint
-    custom_match=lambda e:
-        usb.util.endpoint_direction(0x82) ==
-        usb.util.ENDPOINT_IN)
+ep=intf[1]
+# ep=usb.util.find_descriptor(
+#     intf,
+#     # match the first IN endpoint
+#     custom_match=lambda e:
+#         usb.util.endpoint_direction(0x82) ==
+#         usb.util.ENDPOINT_IN)
 
 assert ep is not None, "Endpoint for USB device not found. Something is wrong."
 
