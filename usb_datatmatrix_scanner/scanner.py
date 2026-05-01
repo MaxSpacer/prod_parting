@@ -47,6 +47,6 @@ class BarcodeReader:
 
 
 
-def barcode_reader(device_path="/dev/hidraw0"):
+def barcode_reader(device_path="/dev/hidraw1"):
     reader = BarcodeReader(device_path)
     return reader.read_barcode()
