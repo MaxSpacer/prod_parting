@@ -20,7 +20,7 @@ ERROR_CHARACTER = '?'
 
 
 class BarcodeReader:
-    def __init__(self, device_path="/dev/hidraw0"):
+    def __init__(self, device_path="/dev/hidraw1"):
         self.device_path = device_path
         self.f = open(self.device_path, "rb")
 
