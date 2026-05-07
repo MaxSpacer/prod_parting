@@ -36,10 +36,10 @@ def get_scan(sender, instance, created, **kwargs):
                     while True:
                         scanned_code = barcode_reader()
                         if scanned_code:
-                            file_out.write(scanned_code + "\n")
-                            file_out.flush()
+                            # file_out.write(scanned_code + "\n")
+                            # file_out.flush()
+                            row_writer.writerow([scanned_code,])
                             print(f"Сохранено: {scanned_code}")
-                            # row_writer.writerow(upcnumber)
                             # print('test -', upcnumber)
                 except KeyboardInterrupt:
                     logging.debug('Keyboard interrupt')
