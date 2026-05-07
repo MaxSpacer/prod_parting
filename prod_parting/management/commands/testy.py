@@ -1,6 +1,6 @@
 # coding: utf-8
 
-from usb_datatmatrix_scanner.scanner import barcode_reader
+from parties.scanner import barcode_reader
 import os
 import re
 import csv

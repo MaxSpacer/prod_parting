@@ -16,7 +16,16 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from filebrowser.sites import site
+from django.http import HttpResponseForbidden
+
+
+def forbidden_view(request, *args, **kwargs):
+    return HttpResponseForbidden("Запрещено.")
 
 urlpatterns = [
+    path('admin/filebrowser/createdir/', forbidden_view),
+    path('admin/filebrowser/upload/', forbidden_view),
+    path('admin/filebrowser/', site.urls),
     path('admin/', admin.site.urls),
 ]
