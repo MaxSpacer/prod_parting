@@ -35,7 +35,7 @@ def get_scan(sender, instance, created, **kwargs):
                     while True:
                         upcnumber = barcode_reader()
                         row_writer.writerow(upcnumber)
-                        print('test', upcnumber)
+                        print('test -', upcnumber)
                 except KeyboardInterrupt:
                     logging.debug('Keyboard interrupt')
                 except Exception as err:
