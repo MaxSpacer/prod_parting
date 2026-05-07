@@ -28,14 +28,19 @@ def get_scan(sender, instance, created, **kwargs):
             pass
         
         if file_out:
+            
             with open(file_out, mode='w', newline='') as file_out:
                 row_writer = csv.writer(file_out, delimiter=';')
                 
                 try:
                     while True:
-                        upcnumber = barcode_reader()
-                        row_writer.writerow(upcnumber)
-                        print('test -', upcnumber)
+                        scanned_code = barcode_reader()
+                        if scanned_code:
+                            file_out.write(scanned_code + "\n")
+                            file_out.flush()
+                            print(f"Сохранено: {scanned_code}")
+                            # row_writer.writerow(upcnumber)
+                            # print('test -', upcnumber)
                 except KeyboardInterrupt:
                     logging.debug('Keyboard interrupt')
                 except Exception as err:
