@@ -23,6 +23,7 @@ def get_scan(sender, instance, created, **kwargs):
 
         file_out = os.path.join(
             settings.MEDIA_ROOT, instance.report_party_file)
+        
         with open(file_out, "w"):
             pass
         
@@ -34,7 +35,7 @@ def get_scan(sender, instance, created, **kwargs):
                     while True:
                         upcnumber = barcode_reader()
                         row_writer.writerow(upcnumber)
-                        print(upcnumber,  'test')
+                        print('test', upcnumber)
                 except KeyboardInterrupt:
                     logging.debug('Keyboard interrupt')
                 except Exception as err:
