@@ -32,12 +32,12 @@ def get_scan(sender, instance, created, **kwargs):
         #     print(jo)    
         # my_cron.write()
     else:
-        from django_tasks_db.models import Task
+        from django_tasks_db.models import DBTaskResult
 
         # # Delete all tasks with a specific name/function
         # Task.objects.filter(task_name="your_task_function_name").delete()
 
         # Or delete everything in the queue
-        Task.objects.all().delete()
+        DBTaskResult.objects.all().delete()
 
         
