@@ -11,14 +11,16 @@ class Party(models.Model):
     def def_file_name():
         return str(f"{uuid.uuid4()}") + '.csv'
 
-    platform_number = models.PositiveIntegerField(blank=False, null=True, default=1)
+    platform_number = models.PositiveIntegerField("номер линии", blank=False, null=True, default=1)
     is_emailed = models.BooleanField(default=False)
-    status = models.BooleanField(default=True)
-    report_party_file = FileBrowseField(max_length=250, extensions=['.csv'], blank=False, null=True, default=def_file_name)
+    status = models.BooleanField("Активен?", default=True)
+    report_party_file = FileBrowseField("отчет по партии", max_length=250, extensions=['.csv'], blank=False, null=True, default=def_file_name)
     created = models.DateTimeField(auto_now_add=True, auto_now=False)
     updated = models.DateTimeField(auto_now_add=False, auto_now=True)
-
-    # def save(self, *args, **kwargs):
+    class Meta:
+        verbose_name = 'Партия'
+        verbose_name_plural = 'Партии'
+        # def save(self, *args, **kwargs):
     #     self.report_party_file = f"{uuid.uuid4()}" + 't.csv'
 
     #     super(Party, self).save(*args, **kwargs)

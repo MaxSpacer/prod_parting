@@ -31,3 +31,13 @@ def get_scan(sender, instance, created, **kwargs):
         # for jo in my_cron:
         #     print(jo)    
         # my_cron.write()
+    else:
+        from django_tasks_db.models import Task
+
+        # # Delete all tasks with a specific name/function
+        # Task.objects.filter(task_name="your_task_function_name").delete()
+
+        # Or delete everything in the queue
+        Task.objects.all().delete()
+
+        
