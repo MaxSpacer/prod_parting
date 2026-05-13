@@ -2,8 +2,11 @@ asgiref==3.11.1
 Django==6.0.4
 django-filebrowser-no-grappelli==4.0.2
 django-grappelli==3.0.10
+django-stubs-ext==6.0.4
+django-tasks==0.12.0
+django-tasks-db==0.12.0
 pillow==12.2.0
-python-crontab==3.3.0
 six==1.17.0
 sqlparse==0.5.5
+typing_extensions==4.15.0
 tzdata==2026.2
