@@ -38,12 +38,15 @@ def get_scan(sender, instance, created, **kwargs):
         # Task.objects.filter(task_name="your_task_function_name").delete()
 
         # Or delete everything in the queue
-        DBTaskResult.objects.all().delete()
+        dbt = DBTaskResult.objects.all()
+        for t in dbt:
+            t.status = "SUCCESSFUL"
+            t.save()
         # Source - https://stackoverflow.com/a/907743
 
-        from django.core.management import call_command
+        # from django.core.management import call_command
 
-        call_command('db_worker', '--reload')
+        # call_command('db_worker', '--reload')
 
 
         
