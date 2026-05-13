@@ -13,23 +13,23 @@ def scan_job(context, file_out):
     #     settings.MEDIA_ROOT, filebrowser_file_name)
 
     with open(file_out, mode='w', newline='') as file_out:
-        file_out.write('scanned_code' + "\n")
+        # file_out.write('scanned_code' + "\n")
         
-        # try:
-        #     while True:
-        #         # logging.debug("tsevcbcvbcvb----------rt: ",
-        #         #                 filebrowser_file_name)
-        #         scanned_code = barcode_reader()
-        #         if scanned_code:
-        #             file_out.write(scanned_code + "\n")
-        #             file_out.flush()
-        #             print(f"Сохранено: {scanned_code}")
-        #             logging.debug(f"Сохранено: {scanned_code}")
-        #         break
-        # except KeyboardInterrupt:
-        #     logging.debug('Keyboard interrupt')
-        # except Exception as err:
-        #     logging.error(err)
+        try:
+            while True:
+                # logging.debug("tsevcbcvbcvb----------rt: ",
+                #                 filebrowser_file_name)
+                scanned_code = barcode_reader()
+                if scanned_code:
+                    file_out.write(scanned_code + "\n")
+                    file_out.flush()
+                    print(f"Сохранено: {scanned_code}")
+                    logging.debug(f"Сохранено: {scanned_code}")
+                break
+        except KeyboardInterrupt:
+            logging.debug('Keyboard interrupt')
+        except Exception as err:
+            logging.error(err)
 
     logging.debug(
         f"Attempt {context.attempt} to send {file_out}. Task result id: {context.task_result.id}."
