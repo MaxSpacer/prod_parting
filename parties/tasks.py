@@ -25,7 +25,7 @@ def scan_job(context, file_out):
                     file_out.flush()
                     print(f"Сохранено: {scanned_code}")
                     logging.debug(f"Сохранено: {scanned_code}")
-                break
+                
         except KeyboardInterrupt:
             logging.debug('Keyboard interrupt')
         except Exception as err:
