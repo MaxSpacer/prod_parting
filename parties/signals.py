@@ -43,7 +43,7 @@ def get_scan(sender, instance, created, **kwargs):
 
         from django.core.management import call_command
 
-        call_command('python prod_parting/manage.py db_worker --reload')
+        call_command('db_worker --reload')
 
 
         
