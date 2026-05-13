@@ -26,6 +26,7 @@ def get_scan(sender, instance, created, **kwargs):
         my_cron = CronTab(user='max_spacer')
 
         job = my_cron.new(command=f'/home/max_spacer/prod_parting/.venv/bin/python /home/max_spacer/prod_parting/manage.py scan_job_command 0 {instance.report_party_file}', comment='scan_job')
+        job.setall('*/10 * * * * *')
         for jo in my_cron:
             print(jo)    
         my_cron.write()

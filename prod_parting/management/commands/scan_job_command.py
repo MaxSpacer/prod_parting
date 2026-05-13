@@ -31,7 +31,7 @@ class Command(BaseCommand):
             with open(file_out, mode='w', newline='') as file_out:
                 try:
                     while True:
-                        print("tsevcbcvbcvb----------rt: ", filebrowser_file_name)
+                        logging.debug("tsevcbcvbcvb----------rt: ", filebrowser_file_name)
                         # scanned_code = barcode_reader()
                         # if scanned_code:
                             # file_out.write(scanned_code + "\n")
