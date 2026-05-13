@@ -17,16 +17,17 @@ from parties.scanner import barcode_reader
 import csv
 import time
 # import asyncio
-from crontab import CronTab
+# from crontab import CronTab
+from .tasks import scan_job
 
 @receiver(post_save, sender=Party)
 def get_scan(sender, instance, created, **kwargs):
     if instance.status:
-        print(...)
-        my_cron = CronTab(user='max_spacer')
+        scan_job.enqueue(str(instance.report_party_file.path_full))
+        # my_cron = CronTab(user='max_spacer')
 
-        job = my_cron.new(command=f'/home/max_spacer/prod_parting/.venv/bin/python /home/max_spacer/prod_parting/manage.py scan_job_command 0 {instance.report_party_file}', comment='scan_job')
-        job.setall('*/10 * * * * *')
-        for jo in my_cron:
-            print(jo)    
-        my_cron.write()
+        # job = my_cron.new(command=f'/home/max_spacer/prod_parting/.venv/bin/python /home/max_spacer/prod_parting/manage.py scan_job_command 0 {instance.report_party_file}', comment='scan_job')
+        # job.setall('*/10 * * * * *')
+        # for jo in my_cron:
+        #     print(jo)    
+        # my_cron.write()

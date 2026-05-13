@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'prod_parting',
     'usb_datatmatrix_scanner',
     'filebrowser',
+    'django_tasks_db',
     'parties.apps.PartiesConfig',
 ]
 
@@ -108,14 +109,14 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/6.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ru-RU'
 
 TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
 USE_TZ = True
-
+TIME_ZONE = 'Europe/Moscow'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
@@ -140,3 +141,10 @@ FILEBROWSER_VERSIONS = {}
 
 # Также можно отключить административные версии, которые используются в самом интерфейсе
 FILEBROWSER_ADMIN_VERSIONS = {}
+
+TASKS = {
+    "default": {
+        "BACKEND": "django_tasks_db.DatabaseBackend",
+        "QUEUES": ["default"]
+    }
+}
