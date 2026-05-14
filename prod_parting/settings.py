@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'prod_parting',
     'usb_datatmatrix_scanner',
     'filebrowser',
+    # 'django_tasks',                   # new
+    # 'django_tasks.backends.database'  # new
     'django_tasks_db',
     'parties.apps.PartiesConfig',
 ]
@@ -144,6 +146,7 @@ FILEBROWSER_ADMIN_VERSIONS = {}
 
 TASKS = {
     "default": {
+        # "BACKEND": "django.tasks.backends.immediate.ImmediateBackend",
         "BACKEND": "django_tasks_db.DatabaseBackend",
         "QUEUES": ["default"]
     }

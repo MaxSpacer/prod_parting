@@ -9,16 +9,16 @@ from parties.scanner import barcode_reader
 @task(takes_context=True, priority=1)
 def scan_job(context, file_out):
     with open(file_out, mode='w', newline='') as file_out:
-        # file_out.write('scanned_code' + "\n")
+        file_out.write('scanned_code' + "\n")
         
         try:
             while True:
-                scanned_code = barcode_reader()
-                if scanned_code:
-                    file_out.write(scanned_code + "\n")
-                    file_out.flush()
-                    # print(f"Сохранено: {scanned_code}")
-                    logging.debug(f"Сохранено: {scanned_code}")
+                print(f"Сохранено: 'scanned_code'")
+                # scanned_code = barcode_reader()
+                # if scanned_code:
+                #     file_out.write(scanned_code + "\n")
+                #     file_out.flush()
+                #     logging.debug(f"Сохранено: {scanned_code}")
                 
         except KeyboardInterrupt:
             logging.debug('Keyboard interrupt')
