@@ -91,6 +91,8 @@ class Daemon:
         try:
             pf = open(self.pidfile, 'r')
             pid = int(pf.read().strip())
+            sys.stdout.write('Start the daemon')
+            
             pf.close()
             sys.stderr.write('Start the daemon')
         except IOError:
@@ -157,11 +159,12 @@ class Daemon:
 
 class testdaemon(Daemon):
     def run(self):
-        sys.stderr.write('Start the daemon')     
+  
         with open('test2.txt', 'w') as f:
             while True:
                 f.write('tse\n')
                 time.sleep(5)
+                
 
 
 daemon = testdaemon()
