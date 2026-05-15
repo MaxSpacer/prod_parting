@@ -88,11 +88,10 @@ class Daemon:
         Start the daemon
         """
         # Check for a pidfile to see if the daemon already runs
+        sys.stderr.write('Start the daemon')
         try:
             pf = open(self.pidfile, 'r')
-            pid = int(pf.read().strip())
-            sys.stdout.write('Start the daemon')
-            
+            pid = int(pf.read().strip())          
             pf.close()
             sys.stderr.write('Start the daemon')
         except IOError:
