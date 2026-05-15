@@ -15,7 +15,7 @@ import atexit
 import logging
 from signal import signal, SIGTERM
 from django.conf import settings
-from parties.scanner import barcode_reader
+# from parties.scanner import barcode_reader
 
 
 class Daemon:
