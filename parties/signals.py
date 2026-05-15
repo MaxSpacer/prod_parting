@@ -30,8 +30,8 @@ import sys,time
  
 @receiver(post_save, sender=Party)
 def get_scan(sender, instance, created, **kwargs):
+    daemon = testdaemon()
     if instance.status:
-        daemon = testdaemon()
         daemon.start()
         # scan_job.enqueue(str(instance.report_party_file.path_full))
         # my_cron = CronTab(user='max_spacer')
@@ -41,7 +41,8 @@ def get_scan(sender, instance, created, **kwargs):
         # for jo in my_cron:
         #     print(jo)    
         # my_cron.write()
-    # else:
+    else:
+        daemon.stop()
     #     from django_tasks_db.models import DBTaskResult
 
         # # Delete all tasks with a specific name/function
