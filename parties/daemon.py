@@ -149,7 +149,7 @@ class Daemon:
 
 class testdaemon(Daemon):
     def run(self, path):
-  
+        sys.stderr.write(path)
         with open(f'test2_{path}.txt', 'w') as f:
             while True:
                 f.write('tse\n')
@@ -159,8 +159,8 @@ class testdaemon(Daemon):
 
 daemon = testdaemon()
 
-if 'start' == sys.argv[1]:
-    daemon.start()
+if 'start' == sys.argv[1] and sys.argv[2]:
+    daemon.start(path = sys.argv[2])
 elif 'stop' == sys.argv[1]:
     daemon.stop()
 elif 'restart' == sys.argv[1]:
