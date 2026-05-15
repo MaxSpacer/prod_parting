@@ -77,7 +77,7 @@ def get_scan(sender, instance, created, **kwargs):
 
         p = subprocess.Popen(cmd, stdout=subprocess.PIPE, shell=True)
         out, err = p.communicate() 
-        result = out.split('\n')
+        result = str(out).split('\n')
         for lin in result:
             if not lin.startswith('#'):
                 print(lin)
