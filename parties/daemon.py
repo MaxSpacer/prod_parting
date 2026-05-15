@@ -159,24 +159,36 @@ class testdaemon(Daemon):
     def run(self):
 
         print('runinf')
-        file_out = os.path.join(settings.MEDIA_ROOT, 'filebrowser_file_name')
+        with open('test2.txt', 'w') as f:
+            f.write('tse')
 
-        with open(file_out, mode='w', newline='') as file_out:
-            try:
-                while True:
-                    logging.debug("tsevcbcvbcvb----------rt: ",
-                                  'filebrowser_file_name')
-                    # scanned_code = barcode_reader()
-                    # if scanned_code:
-                    # file_out.write(scanned_code + "\n")
-                    # file_out.flush()
-                    # print(f"Сохранено: {scanned_code}")
-                    time.sleep(5)
 
-            except KeyboardInterrupt:
-                logging.debug('Keyboard interrupt')
-            except Exception as err:
-                logging.error(err)
+daemon = testdaemon()
+
+if 'start' == sys.argv[1]:
+    daemon.start()
+elif 'stop' == sys.argv[1]:
+    daemon.stop()
+elif 'restart' == sys.argv[1]:
+    daemon.restart()
+    # file_out = os.path.join(settings.MEDIA_ROOT, 'filebrowser_file_name')
+
+    # with open(file_out, mode='w', newline='') as file_out:
+    #     try:
+    #         while True:
+    #             logging.debug("tsevcbcvbcvb----------rt: ",
+    #                           'filebrowser_file_name')
+    #             # scanned_code = barcode_reader()
+    #             # if scanned_code:
+    #             file_out.write(scanned_code + "\n")
+    #             file_out.flush()
+    #             # print(f"Сохранено: {scanned_code}")
+    #             time.sleep(5)
+
+    #     except KeyboardInterrupt:
+    #         logging.debug('Keyboard interrupt')
+    #     except Exception as err:
+    #         logging.error(err)
 
     # def quit(self):
     #     with open('test2.txt', 'w') as f:
