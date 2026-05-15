@@ -158,9 +158,10 @@ class Daemon:
 class testdaemon(Daemon):
     def run(self):
 
-        print('runinf')
         with open('test2.txt', 'w') as f:
-            f.write('tse')
+            while True:
+                f.write('tse\n')
+                time.sleep(5)
 
 
 daemon = testdaemon()
