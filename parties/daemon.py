@@ -5,7 +5,6 @@ import atexit
 import logging
 from signal import signal, SIGTERM
 from django.conf import settings
-from parties.scanner import barcode_reader
 
 
 class Daemon:
@@ -153,6 +152,8 @@ class testdaemon(Daemon):
         # sys.stderr.write('\n')
         # file_out = os.path.join(
         #         settings.MEDIA_ROOT, filebrowser_file_name)
+        from parties.scanner import barcode_reader
+
 
         with open(path, mode='w', newline='') as file_out:
             try:

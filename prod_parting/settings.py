@@ -37,7 +37,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'parties',
     'prod_parting',
     'usb_datatmatrix_scanner',
     'filebrowser',
