@@ -32,6 +32,7 @@ import sys,time
 def get_scan(sender, instance, created, **kwargs):
     daemon = testdaemon()
     if instance.status:
+        
         daemon.start()
         # scan_job.enqueue(str(instance.report_party_file.path_full))
         # my_cron = CronTab(user='max_spacer')

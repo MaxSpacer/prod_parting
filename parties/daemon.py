@@ -92,6 +92,7 @@ class Daemon:
             pf = open(self.pidfile, 'r')
             pid = int(pf.read().strip())
             pf.close()
+            sys.stderr.write('Start the daemon')
         except IOError:
             pid = None
 
@@ -176,9 +177,9 @@ class testdaemon(Daemon):
 		# 		logging.error(err)
 
 
-    def quit(self):
-        with open('test2.txt', 'w') as f:
-            f.write(str(self.i))
+    # def quit(self):
+    #     with open('test2.txt', 'w') as f:
+    #         f.write(str(self.i))
 
 
 
