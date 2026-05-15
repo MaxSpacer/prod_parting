@@ -66,6 +66,19 @@ def get_scan(sender, instance, created, **kwargs):
         # Retrieved 2026-05-14, License - CC BY-SA 4.0
 
         # import subprocess
-        # subprocess.call(['sh', './test.sh']) # Thanks @Jim Dennis for suggesting the []
+        # subprocess.call(['python', './test.sh']) # Thanks @Jim Dennis for suggesting the []
   
+        # Source - https://stackoverflow.com/a/26625982
+# Posted by Medhat, modified by community. See post 'Timeline' for change history
+# Retrieved 2026-05-15, License - CC BY-SA 3.0
+
+        import subprocess
+        cmd = '/home/max_spacer/prod_parting/.venv/bin/python /home/max_spacer/prod_parting/parties/daemon.py start'
+
+        p = subprocess.Popen(cmd, stdout=subprocess.PIPE, shell=True)
+        out, err = p.communicate() 
+        result = out.split('\n')
+        for lin in result:
+            if not lin.startswith('#'):
+                print(lin)
 
