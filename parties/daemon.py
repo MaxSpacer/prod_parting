@@ -197,22 +197,19 @@ class Daemon:
 class testdaemon(Daemon):
     def run(self, path):
         sys.stderr.write(path)
-        # sys.stderr.write('\n')
-        # file_out = os.path.join(
-        #         settings.MEDIA_ROOT, filebrowser_file_name)
-
-
-
+        logging.debuf(path)
+        
         with open(path, mode='w', newline='') as file_out:
             try:
                 while True:
-                    logging.debug("tsevcbcvbcvb----------rt: ", 'filebrowser_file_name')
+
                     scanned_code = barcode_reader()
                     if scanned_code:
                         file_out.write(scanned_code + "\n")
                         file_out.flush()
                         print(f"Сохранено: {scanned_code}")
-                    
+                        sys.stderr.write(f"Сохранено: {scanned_code}")
+                        
             except KeyboardInterrupt:
                 logging.debug('Keyboard interrupt')
             except Exception as err:
