@@ -83,7 +83,7 @@ class Daemon:
             pf = open(self.pidfile, 'r')
             pid = int(pf.read().strip())          
             pf.close()
-            sys.stderr.write('Start the daemon')
+            sys.stderr.write('Start the daemon\n')
         except IOError:
             pid = None
 
@@ -105,7 +105,7 @@ class Daemon:
             pf = open(self.pidfile, 'r')
             pid = int(pf.read().strip())
             pf.close()
-            sys.stderr.write('Stop the daemon')
+            sys.stderr.write('Stop the daemon\n')
         except IOError:
             pid = None
 
@@ -150,7 +150,8 @@ class Daemon:
 class testdaemon(Daemon):
     def run(self, path):
         sys.stderr.write(path)
-        with open(f'test2_{path}.txt', 'w') as f:
+        sys.stderr.write('\n')
+        with open(f'{path}', 'w') as f:
             while True:
                 f.write('tse\n')
                 time.sleep(5)
