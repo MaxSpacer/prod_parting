@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     'filebrowser',
     # 'django_tasks',                   # new
     # 'django_tasks.backends.database'  # new
-    'django_tasks_db',
+    # 'django_tasks_db',
     'parties.apps.PartiesConfig',
 ]
 
@@ -144,10 +144,10 @@ FILEBROWSER_VERSIONS = {}
 # Также можно отключить административные версии, которые используются в самом интерфейсе
 FILEBROWSER_ADMIN_VERSIONS = {}
 
-TASKS = {
-    "default": {
-        # "BACKEND": "django.tasks.backends.immediate.ImmediateBackend",
-        "BACKEND": "django_tasks_db.DatabaseBackend",
-        "QUEUES": ["default"]
-    }
-}
+# TASKS = {
+#     "default": {
+#         # "BACKEND": "django.tasks.backends.immediate.ImmediateBackend",
+#         "BACKEND": "django_tasks_db.DatabaseBackend",
+#         "QUEUES": ["default"]
+#     }
+# }

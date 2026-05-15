@@ -12,7 +12,10 @@ import sys
 import os
 import time
 import atexit
+import logging
 from signal import signal, SIGTERM
+from django.conf import settings
+from parties.scanner import barcode_reader
 
 
 class Daemon:
@@ -145,6 +148,7 @@ class Daemon:
         daemonized by start() or restart().
         """
 
+
     def quit(self):
         """
         You should override this method when you subclass Daemon. It will be called before the process is stopped.
@@ -153,12 +157,24 @@ class Daemon:
 
 class testdaemon(Daemon):
     def run(self):
-        self.i = 0
-        with open('test1.txt', 'w') as f:
-            f.write(str(self.i))
-        while True:
-            self.i += 1
-            time.sleep(1)
+        print('runinf')
+		# file_out = os.path.join(settings.MEDIA_ROOT, filebrowser_file_name)
+
+		# with open(file_out, mode='w', newline='') as file_out:
+		# 	try:
+		# 		while True:
+		# 			logging.debug("tsevcbcvbcvb----------rt: ", filebrowser_file_name)
+		# 			# scanned_code = barcode_reader()
+		# 			# if scanned_code:
+		# 				# file_out.write(scanned_code + "\n")
+		# 				# file_out.flush()
+		# 				# print(f"Сохранено: {scanned_code}")
+		# 			break
+		# 	except KeyboardInterrupt:
+		# 		logging.debug('Keyboard interrupt')
+		# 	except Exception as err:
+		# 		logging.error(err)
+
 
     def quit(self):
         with open('test2.txt', 'w') as f:
