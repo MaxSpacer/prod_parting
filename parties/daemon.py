@@ -1,13 +1,3 @@
-# From "A simple unix/linux daemon in Python" by Sander Marechal
-# See http://stackoverflow.com/a/473702/1422096 and http://web.archive.org/web/20131017130434/http://www.jejik.com/articles/2007/02/a_simple_unix_linux_daemon_in_python/
-#
-# Modified to add quit() that allows to run some code before closing the daemon
-# See http://stackoverflow.com/a/40423758/1422096
-#
-# Modified for Python 3 (see also: http://web.archive.org/web/20131017130434/http://www.jejik.com/files/examples/daemon3x.py)
-#
-# Joseph Ernest, 20200507_1220
-
 import sys
 import os
 import time
@@ -83,12 +73,12 @@ class Daemon:
         self.quit()
         os.remove(self.pidfile)
 
-    def start(self):
+    def start(self, path=None):
         """
         Start the daemon
         """
         # Check for a pidfile to see if the daemon already runs
-        sys.stderr.write('Start the daemon')
+        
         try:
             pf = open(self.pidfile, 'r')
             pid = int(pf.read().strip())          
@@ -104,7 +94,7 @@ class Daemon:
 
         # Start the daemon
         self.daemonize()
-        self.run()
+        self.run(path)
 
     def stop(self):
         """
@@ -115,6 +105,7 @@ class Daemon:
             pf = open(self.pidfile, 'r')
             pid = int(pf.read().strip())
             pf.close()
+            sys.stderr.write('Stop the daemon')
         except IOError:
             pid = None
 
@@ -157,9 +148,9 @@ class Daemon:
 
 
 class testdaemon(Daemon):
-    def run(self):
+    def run(self, path):
   
-        with open('test2.txt', 'w') as f:
+        with open(f'test2_{path}.txt', 'w') as f:
             while True:
                 f.write('tse\n')
                 time.sleep(5)

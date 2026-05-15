@@ -22,7 +22,7 @@ import time
 # from crontab import CronTab
 from .tasks import scan_job
 from django.core import management 
- 
+import subprocess
  
  
 import sys,time
@@ -32,7 +32,7 @@ import sys,time
 def get_scan(sender, instance, created, **kwargs):
     daemon = testdaemon()
     if instance.status:
-        ...
+        cmd = '/home/max_spacer/prod_parting/.venv/bin/python /home/max_spacer/prod_parting/parties/daemon.py start'
         # daemon.start()
         # scan_job.enqueue(str(instance.report_party_file.path_full))
         # my_cron = CronTab(user='max_spacer')
@@ -42,43 +42,13 @@ def get_scan(sender, instance, created, **kwargs):
         # for jo in my_cron:
         #     print(jo)    
         # my_cron.write()
-    # else:
-        # daemon.stop()
-    #     from django_tasks_db.models import DBTaskResult
+    else:
+        cmd = '/home/max_spacer/prod_parting/.venv/bin/python /home/max_spacer/prod_parting/parties/daemon.py stop'
 
-        # # Delete all tasks with a specific name/function
-        # Task.objects.filter(task_name="your_task_function_name").delete()
-
-        # Or delete everything in the queue
-        # dbt = DBTaskResult.objects.all()
-        # for t in dbt:
-        #     t.status = "SUCCESSFUL"
-        #     t.save()
-        # Source - https://stackoverflow.com/a/907743
-
-        # from django.core.management import call_command
-
-        # management.call_command('db_worker', '--no-reload')
-
-
-        # Source - https://stackoverflow.com/a/3777308
-        # Posted by Manoj Govindan, modified by community. See post 'Timeline' for change history
-        # Retrieved 2026-05-14, License - CC BY-SA 4.0
-
-        # import subprocess
-        # subprocess.call(['python', './test.sh']) # Thanks @Jim Dennis for suggesting the []
-  
-        # Source - https://stackoverflow.com/a/26625982
-# Posted by Medhat, modified by community. See post 'Timeline' for change history
-# Retrieved 2026-05-15, License - CC BY-SA 3.0
-
-        import subprocess
-        cmd = '/home/max_spacer/prod_parting/.venv/bin/python /home/max_spacer/prod_parting/parties/daemon.py start'
-
-        p = subprocess.Popen(cmd, stdout=subprocess.PIPE, shell=True)
-        out, err = p.communicate() 
-        result = str(out).split('\n')
-        for lin in result:
-            if not lin.startswith('#'):
-                print(lin)
+    p = subprocess.Popen(cmd, stdout=subprocess.PIPE)
+    out, err = p.communicate() 
+    result = str(out).split('\n')
+    for lin in result:
+        if not lin.startswith('#'):
+            print(lin)
 
