@@ -157,24 +157,28 @@ class Daemon:
 
 
 class testdaemon(Daemon):
+    
     def run(self):
-        print('runinf')
-		# file_out = os.path.join(settings.MEDIA_ROOT, filebrowser_file_name)
-
-		# with open(file_out, mode='w', newline='') as file_out:
-		# 	try:
-		# 		while True:
-		# 			logging.debug("tsevcbcvbcvb----------rt: ", filebrowser_file_name)
-		# 			# scanned_code = barcode_reader()
-		# 			# if scanned_code:
-		# 				# file_out.write(scanned_code + "\n")
-		# 				# file_out.flush()
-		# 				# print(f"Сохранено: {scanned_code}")
-		# 			break
-		# 	except KeyboardInterrupt:
-		# 		logging.debug('Keyboard interrupt')
-		# 	except Exception as err:
-		# 		logging.error(err)
+        
+        
+		print('runinf')
+ 		file_out = os.path.join(settings.MEDIA_ROOT, 'filebrowser_file_name')
+   
+		with open(file_out, mode='w', newline='') as file_out:
+			try:
+				while True:
+					logging.debug("tsevcbcvbcvb----------rt: ", 'filebrowser_file_name')
+					# scanned_code = barcode_reader()
+					# if scanned_code:
+						# file_out.write(scanned_code + "\n")
+						# file_out.flush()
+						# print(f"Сохранено: {scanned_code}")
+					time.sleep(5)
+					
+			except KeyboardInterrupt:
+				logging.debug('Keyboard interrupt')
+			except Exception as err:
+				logging.error(err)
 
 
     # def quit(self):
