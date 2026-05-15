@@ -5,7 +5,7 @@ import atexit
 import logging
 from signal import signal, SIGTERM
 from django.conf import settings
-# from parties.scanner import barcode_reader
+from .scanner import barcode_reader
 
 
 class Daemon:
@@ -150,13 +150,24 @@ class Daemon:
 class testdaemon(Daemon):
     def run(self, path):
         sys.stderr.write(path)
-        sys.stderr.write('\n')
-        with open(f'{path}', 'w') as f:
-            while True:
-                f.write('tse\n')
-                time.sleep(5)
-                
+        # sys.stderr.write('\n')
+        # file_out = os.path.join(
+        #         settings.MEDIA_ROOT, filebrowser_file_name)
 
+        with open(path, mode='w', newline='') as file_out:
+            try:
+                while True:
+                    logging.debug("tsevcbcvbcvb----------rt: ", 'filebrowser_file_name')
+                    scanned_code = barcode_reader()
+                    if scanned_code:
+                        file_out.write(scanned_code + "\n")
+                        file_out.flush()
+                        print(f"Сохранено: {scanned_code}")
+                    
+            except KeyboardInterrupt:
+                logging.debug('Keyboard interrupt')
+            except Exception as err:
+                logging.error(err)
 
 daemon = testdaemon()
 
@@ -166,25 +177,6 @@ elif 'stop' == sys.argv[1]:
     daemon.stop()
 elif 'restart' == sys.argv[1]:
     daemon.restart()
-    # file_out = os.path.join(settings.MEDIA_ROOT, 'filebrowser_file_name')
-
-    # with open(file_out, mode='w', newline='') as file_out:
-    #     try:
-    #         while True:
-    #             logging.debug("tsevcbcvbcvb----------rt: ",
-    #                           'filebrowser_file_name')
-    #             # scanned_code = barcode_reader()
-    #             # if scanned_code:
-    #             file_out.write(scanned_code + "\n")
-    #             file_out.flush()
-    #             # print(f"Сохранено: {scanned_code}")
-    #             time.sleep(5)
-
-    #     except KeyboardInterrupt:
-    #         logging.debug('Keyboard interrupt')
-    #     except Exception as err:
-    #         logging.error(err)
-
+    
     # def quit(self):
-    #     with open('test2.txt', 'w') as f:
-    #         f.write(str(self.i))
+    #    ...
