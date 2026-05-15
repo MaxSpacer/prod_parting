@@ -31,7 +31,6 @@ ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 # Application definition
 
 INSTALLED_APPS = [
-    'grappelli',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -42,9 +41,6 @@ INSTALLED_APPS = [
     'prod_parting',
     'usb_datatmatrix_scanner',
     'filebrowser',
-    # 'django_tasks',                   # new
-    # 'django_tasks.backends.database'  # new
-    # 'django_tasks_db',
     'parties.apps.PartiesConfig',
 ]
 
