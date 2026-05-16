@@ -11,10 +11,12 @@ import subprocess
 def get_scan(sender, instance, created, **kwargs):
     daemon = testdaemon()
     if instance.status:
-        cmd = f'/home/max_spacer/prod_parting/.venv/bin/python /home/max_spacer/prod_parting/parties/daemon.py start {instance.report_party_file.path_full}'
+        cmd = f'/webapps/prod_parting/.venv/bin/python webapps/prod_parting/prod_parting/parties/daemon.py start {instance.report_party_file.path_full}'
+        #cmd = f'/home/max_spacer/prod_parting/.venv/bin/python /home/max_spacer/prod_parting/parties/daemon.py start {instance.report_party_file.path_full}'
 
     else:
-        cmd = '/home/max_spacer/prod_parting/.venv/bin/python /home/max_spacer/prod_parting/parties/daemon.py stop'
+        cmd = '/webapps/prod_parting/.venv/bin/python webapps/prod_parting/prod_parting/parties/daemon.py stop'
+        #cmd = '/home/max_spacer/prod_parting/.venv/bin/python /home/max_spacer/prod_parting/parties/daemon.py stop'
 
     p = subprocess.Popen(cmd, stdout=subprocess.PIPE, shell=True)
     out, err = p.communicate() 
