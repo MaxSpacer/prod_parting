@@ -62,7 +62,7 @@ class Daemon:
     Usage: subclass the Daemon class and override the run() method
     """
 
-    def __init__(self, pidfile='_.pid', stdin='/dev/null', stdout='/dev/null', stderr='/dev/null'):
+    def __init__(self, pidfile='/webapps/prod_parting/run/_scan_daemon.pid', stdin='/dev/null', stdout='/dev/null', stderr='/dev/null'):
         self.stdin = stdin
         self.stdout = stdout
         self.stderr = stderr
@@ -221,6 +221,8 @@ daemon = testdaemon()
 
 if 'start' == sys.argv[1] and sys.argv[2]:
     daemon.start(path = sys.argv[2])
+elif 'start' == sys.argv[1] :
+    daemon.start()
 elif 'stop' == sys.argv[1]:
     daemon.stop()
 elif 'restart' == sys.argv[1]:
