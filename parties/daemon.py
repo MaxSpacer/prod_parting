@@ -4,7 +4,7 @@ import time
 import atexit
 import logging
 from signal import signal, SIGTERM
-from django.conf import settings
+# from django.conf import settings
 
 
 CHARMAP_LOWERCASE = {4: 'a', 5: 'b', 6: 'c', 7: 'd', 8: 'e', 9: 'f', 10: 'g', 11: 'h', 12: 'i', 13: 'j', 14: 'k',
@@ -125,9 +125,11 @@ class Daemon:
         Start the daemon
         """
         # Check for a pidfile to see if the daemon already runs
-        sys.stderr.write('Start the daemon\n')
+        # sys.stderr.write('Start the daemon\n')
         try:
+            sys.stderr.write('try Start the daemon\n')
             pf = open(self.pidfile, 'r')
+            sys.stderr.write(pf, self.pidfile,' the daemon\n')
             pid = int(pf.read().strip())          
             pf.close()
             sys.stderr.write('Start the daemon\n')
