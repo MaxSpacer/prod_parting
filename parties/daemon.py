@@ -198,13 +198,13 @@ class Daemon:
 class testdaemon(Daemon):
     def run(self, path):
         sys.stderr.write(path)
-        logging.debuf(path)
+        logging.debug(path)
         
         with open(path, mode='w', newline='') as file_out:
             # try:
             while True:
 
-
+                time.sleep(10)
                 scanned_code = barcode_reader()
                 if scanned_code:
                     file_out.write(scanned_code + "\n")
