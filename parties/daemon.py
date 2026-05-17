@@ -62,7 +62,7 @@ class Daemon:
     Usage: subclass the Daemon class and override the run() method
     """
 
-    def __init__(self, pidfile='/webapps/prod_parting/run/_scan_daemon.pid', stdin='/webapps/prod_parting/logs/scan_daemon.log', stdout='/webapps/prod_parting/logs/scan_daemon.log', stderr='/webapps/prod_parting/logs/scan_daemon.log'):
+    def __init__(self, pidfile='/webapps/prod_parting/run/_scan_daemon.pid', stdin='/dev/null', stdout='/dev/null', stderr='/dev/null'):
         self.stdin = stdin
         self.stdout = stdout
         self.stderr = stderr
@@ -201,26 +201,20 @@ class testdaemon(Daemon):
         logging.debug(path)
         
         with open(path, mode='w', newline='') as file_out:
-            # try:
-            while True:
-
-                time.sleep(10)
-                scanned_code = barcode_reader()
-                if scanned_code:
-                    file_out.write(scanned_code + "\n")
-                    file_out.flush()
-                #     print(f"Сохранено: {scanned_code}")
-                    sys.stderr.write(f"Сохранено: {scanned_code}")
-                else:
-                    sys.stderr.write(f"errore"+ str(scanned_code))
+            try:
+                while True:
+                    scanned_code = barcode_reader()
+                    if scanned_code:
+                        file_out.write(scanned_code + "\n")
+                        file_out.flush()
+                        print(f"Сохранено: {scanned_code}")
+                        logging.debug(f"Сохранено: {scanned_code}")
+                        sys.stderr.write(f"Сохранено: {scanned_code}")
                         
-                        
-            # except KeyboardInterrupt:
-            #     logging.debug('Keyboard interrupt')
-            #     sys.stderr.write('Keyboard interrupt')
-            # except Exception as err:
-            #     logging.error(err)
-            #     sys.stderr.write(err)
+            except KeyboardInterrupt:
+                logging.debug('Keyboard interrupt')
+            except Exception as err:
+                logging.error(err)
 
 daemon = testdaemon()
 
