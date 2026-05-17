@@ -206,13 +206,14 @@ class testdaemon(Daemon):
             try:
                 while True:
 
-                    # scanned_code = barcode_reader()
-                    # if scanned_code:
-                    file_out.write('scanned_code' + "\n")
-                    file_out.flush()
+
+                    scanned_code = barcode_reader()
+                    if scanned_code:
+                        file_out.write(scanned_code + "\n")
+                        file_out.flush()
                     #     print(f"Сохранено: {scanned_code}")
-                    sys.stderr.write(f"Сохранено: {'scanned_code'}")
-                    time.sleep(10)
+                    sys.stderr.write(f"Сохранено: {scanned_code}")
+                    # time.sleep(10)
                         
             except KeyboardInterrupt:
                 logging.debug('Keyboard interrupt')
