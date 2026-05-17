@@ -127,15 +127,15 @@ class Daemon:
         """
         # Check for a pidfile to see if the daemon already runs
         # sys.stderr.write('Start the daemon\n')
-        # try:
-        sys.stderr.write('try Start the daemon\n')
-        pf = open(self.pidfile, 'r')
-        sys.stderr.write(pf, self.pidfile,' the daemon\n')
-        pid = int(pf.read().strip())          
-        pf.close()
-        sys.stderr.write('Start the daemon\n')
-        # except IOError:
-        #     pid = None
+        try:
+            sys.stderr.write('try Start the daemon\n')
+            pf = open(self.pidfile, 'r')
+            sys.stderr.write(pf, self.pidfile,' the daemon\n')
+            pid = int(pf.read().strip())          
+            pf.close()
+            sys.stderr.write('Start the daemon\n')
+        except IOError:
+            pid = None
 
         if pid:
             message = "pidfile %s already exist. Daemon already running?\n"
@@ -206,12 +206,13 @@ class testdaemon(Daemon):
             try:
                 while True:
 
-                    scanned_code = barcode_reader()
-                    if scanned_code:
-                        file_out.write(scanned_code + "\n")
-                        file_out.flush()
-                        print(f"Сохранено: {scanned_code}")
-                        sys.stderr.write(f"Сохранено: {scanned_code}")
+                    # scanned_code = barcode_reader()
+                    # if scanned_code:
+                    file_out.write(scanned_code + "\n")
+                    file_out.flush()
+                    #     print(f"Сохранено: {scanned_code}")
+                    sys.stderr.write(f"Сохранено: {'scanned_code'}")
+                    time.sleep(10)
                         
             except KeyboardInterrupt:
                 logging.debug('Keyboard interrupt')
