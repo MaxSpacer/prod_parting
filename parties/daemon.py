@@ -67,6 +67,7 @@ class Daemon:
         self.stdout = stdout
         self.stderr = stderr
         self.pidfile = pidfile
+        print(self.pidfile)
 
     def daemonize(self):
         """
