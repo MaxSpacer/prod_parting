@@ -24,4 +24,5 @@ class Party(models.Model):
         if c and self.status:
             raise ValidationError(f"На линии {self.platform_number} уже есть активные партии {tuple(c.values_list( 'id' ,flat = True))}!\nДеактивируйте их, сняв галку с поле Активен")
         
-        
+    def __str__(self):
+        return f"Партия № {self.id}"   
