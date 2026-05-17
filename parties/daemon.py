@@ -201,26 +201,26 @@ class testdaemon(Daemon):
         logging.debuf(path)
         
         with open(path, mode='w', newline='') as file_out:
-            try:
-                while True:
+            # try:
+            while True:
 
 
-                    scanned_code = barcode_reader()
-                    if scanned_code:
-                        file_out.write(scanned_code + "\n")
-                        file_out.flush()
-                    #     print(f"Сохранено: {scanned_code}")
-                        sys.stderr.write(f"Сохранено: {scanned_code}")
-                    else:
-                        sys.stderr.write(f"errore"+ str(scanned_code))
+                scanned_code = barcode_reader()
+                if scanned_code:
+                    file_out.write(scanned_code + "\n")
+                    file_out.flush()
+                #     print(f"Сохранено: {scanned_code}")
+                    sys.stderr.write(f"Сохранено: {scanned_code}")
+                else:
+                    sys.stderr.write(f"errore"+ str(scanned_code))
                         
                         
-            except KeyboardInterrupt:
-                logging.debug('Keyboard interrupt')
-                sys.stderr.write('Keyboard interrupt')
-            except Exception as err:
-                logging.error(err)
-                sys.stderr.write(err)
+            # except KeyboardInterrupt:
+            #     logging.debug('Keyboard interrupt')
+            #     sys.stderr.write('Keyboard interrupt')
+            # except Exception as err:
+            #     logging.error(err)
+            #     sys.stderr.write(err)
 
 daemon = testdaemon()
 
