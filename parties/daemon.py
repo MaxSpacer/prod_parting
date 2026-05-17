@@ -217,8 +217,10 @@ class testdaemon(Daemon):
                         
             except KeyboardInterrupt:
                 logging.debug('Keyboard interrupt')
+                sys.stderr.write('Keyboard interrupt')
             except Exception as err:
                 logging.error(err)
+                sys.stderr.write(err)
 
 daemon = testdaemon()
 
