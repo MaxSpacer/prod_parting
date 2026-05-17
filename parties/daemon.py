@@ -220,9 +220,9 @@ class testdaemon(Daemon):
 
 daemon = testdaemon()
 
-if 'start' == sys.argv[1] and sys.argv[2]:
-    daemon.start(path = sys.argv[2])
-elif 'start' == sys.argv[1] :
+# if 'start' == sys.argv[1] and sys.argv[2]:
+#     daemon.start(path = sys.argv[2])
+if 'start' == sys.argv[1] :
     daemon.start()
 elif 'stop' == sys.argv[1]:
     daemon.stop()
