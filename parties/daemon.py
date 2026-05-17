@@ -62,12 +62,11 @@ class Daemon:
     Usage: subclass the Daemon class and override the run() method
     """
 
-    def __init__(self, pidfile='/webapps/prod_parting/run/_scan_daemon.pid', stdin='/dev/null', stdout='/dev/null', stderr='/dev/null'):
+    def __init__(self, pidfile='/webapps/prod_parting/run/_scan_daemon.pid', stdin='/webapps/prod_parting/logs/scan_daemon.log', stdout='/webapps/prod_parting/logs/scan_daemon.log', stderr='/webapps/prod_parting/logs/scan_daemon.log'):
         self.stdin = stdin
         self.stdout = stdout
         self.stderr = stderr
         self.pidfile = pidfile
-        print(self.pidfile)
 
     def daemonize(self):
         """
