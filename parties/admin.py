@@ -16,7 +16,7 @@ class PartyAdmin(admin.ModelAdmin):
                     "report_party_file_link",
                     "created"
                     ]
-    readonly_fields = ['is_emailed']
+    readonly_fields = ['is_emailed', 'report_party_file']
     exclude = ('is_emailed',)
     
     def report_party_file_link(self, obj):
