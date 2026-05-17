@@ -10,7 +10,7 @@ from django.core.management.base import BaseCommand, CommandError
 
 # from bs4 import BeautifulSoup
 
-import requests
+# import requests
 
 
 class Command(BaseCommand):
