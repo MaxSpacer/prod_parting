@@ -210,8 +210,10 @@ class testdaemon(Daemon):
                         file_out.write(scanned_code + "\n")
                         file_out.flush()
                     #     print(f"Сохранено: {scanned_code}")
-                    sys.stderr.write(f"Сохранено: {scanned_code}")
-                    # time.sleep(10)
+                        sys.stderr.write(f"Сохранено: {scanned_code}")
+                    else:
+                        sys.stderr.write(f"errore"+ str(scanned_code))
+                        
                         
             except KeyboardInterrupt:
                 logging.debug('Keyboard interrupt')
