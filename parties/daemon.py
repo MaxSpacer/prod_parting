@@ -4,7 +4,7 @@ import time
 import atexit
 import logging
 from signal import signal, SIGTERM
-# from django.conf import settings
+from django.conf import settings
 
 
 CHARMAP_LOWERCASE = {4: 'a', 5: 'b', 6: 'c', 7: 'd', 8: 'e', 9: 'f', 10: 'g', 11: 'h', 12: 'i', 13: 'j', 14: 'k',
@@ -198,8 +198,11 @@ class Daemon:
 class testdaemon(Daemon):
     def run(self, path):
         sys.stderr.write(path)
-        logging.debug(path)
-        
+        # logging.debug(path)
+        # file = os.path.join(settings.MEDIA_ROOT, path)
+        # sys.stderr.write('file\n')
+        # print(file)
+
         with open(path, mode='w', newline='') as file_out:
             try:
                 while True:

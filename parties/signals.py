@@ -5,13 +5,17 @@ from django.db.models.signals import post_save
 from parties.daemon import testdaemon
 from .models import Party
 import subprocess
-
+from django.conf import settings
+import os
+ 
  
 @receiver(post_save, sender=Party)
 def get_scan(sender, instance, created, **kwargs):
     daemon = testdaemon()
     if instance.status:
-        cmd = f'/webapps/prod_parting/.venv/bin/python /webapps/prod_parting/prod_parting/parties/daemon.py start {instance.report_party_file.path_full}'
+        fil = os.path.join(settings.MEDIA_ROOT, instance.report_party_file)
+        print(file)
+        cmd = f'/webapps/prod_parting/.venv/bin/python /webapps/prod_parting/prod_parting/parties/daemon.py start {fil}'
         #cmd = f'/home/max_spacer/prod_parting/.venv/bin/python /home/max_spacer/prod_parting/parties/daemon.py start {instance.report_party_file.path_full}'
 
     else:
