@@ -6,12 +6,12 @@ import uuid
 
 class Party(models.Model):
     def def_file_name():
-        return str(f"{uuid.uuid4()}") + '.csv'
+        return str(f"{uuid.uuid4()}") + '.xls'
 
     platform_number = models.PositiveIntegerField("номер линии", blank=False, null=True, default=1)
     is_emailed = models.BooleanField(default=False)
     status = models.BooleanField("Активен?", default=True)
-    report_party_file = FileBrowseField("отчет по партии", max_length=250, extensions=['.csv'], blank=False, null=True, default=def_file_name)
+    report_party_file = FileBrowseField("отчет по партии", max_length=250, extensions=['.xls'], blank=False, null=True, default=def_file_name)
     created = models.DateTimeField(auto_now_add=True, auto_now=False)
     updated = models.DateTimeField(auto_now_add=False, auto_now=True)
     
