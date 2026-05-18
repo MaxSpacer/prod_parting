@@ -19,7 +19,7 @@ CHARMAP_UPPERCASE = {4: 'A', 5: 'B', 6: 'C', 7: 'D', 8: 'E', 9: 'F', 10: 'G', 11
                      53: '~', 54: '<', 55: '>', 56: '?'}
 CR_CHAR = 40
 SHIFT_CHAR = 2
-ERROR_CHARACTER = '?'
+ERROR_CHARACTER = '↔'
 
 
 class BarcodeReader:
