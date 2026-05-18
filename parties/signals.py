@@ -14,7 +14,6 @@ def get_scan(sender, instance, created, **kwargs):
     daemon = testdaemon()
     if instance.status:
         fil = os.path.join(settings.MEDIA_ROOT, instance.report_party_file)
-        print(file)
         cmd = f'/webapps/prod_parting/.venv/bin/python /webapps/prod_parting/prod_parting/parties/daemon.py start {fil}'
         #cmd = f'/home/max_spacer/prod_parting/.venv/bin/python /home/max_spacer/prod_parting/parties/daemon.py start {instance.report_party_file.path_full}'
 
