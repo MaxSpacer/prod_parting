@@ -20,11 +20,13 @@ from django.urls import path
 from filebrowser.sites import site
 from django.http import HttpResponseForbidden
 from django.conf.urls.static import static
-
+from parties.views import create_xls, read_csv_file
 def forbidden_view(request, *args, **kwargs):
     return HttpResponseForbidden("Запрещено.")
 
 urlpatterns = [
+    path('admin/create_xls/<int:item>', create_xls, name='add_to_cart_view_name'),
+    path('admin/read_csv_file/<int:item>', read_csv_file, name='read_csv_file_view_name'),
     path('admin/filebrowser/createdir/', forbidden_view),
     path('admin/filebrowser/upload/', forbidden_view),
     path('admin/filebrowser/', site.urls),

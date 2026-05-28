@@ -203,7 +203,7 @@ class testdaemon(Daemon):
         # sys.stderr.write('file\n')
         # print(file)
 
-        with open(path, mode='w', newline='') as file_out:
+        with open(path, mode='w', newline='', encoding='utf-8') as file_out:
             try:
                 while True:
                     scanned_code = barcode_reader()
