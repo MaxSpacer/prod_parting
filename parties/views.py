@@ -16,7 +16,7 @@ def create_xls(request, item):
     if os.path.isfile(file_path_xls):
         os.remove(file_path_xls)
 
-    with open(party.report_party_file.path_full, mode="r", encoding="utf-8") as csv_file, \
+    with open(party.report_party_file.path_full, mode="r", encoding="utf-8", newline='') as csv_file, \
         pd.ExcelWriter(file_path_xls, engine="xlsxwriter") as writer:  
         csv_reader = csv.reader(csv_file)
         
