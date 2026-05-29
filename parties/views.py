@@ -23,8 +23,8 @@ def create_xls(request, item):
         for index, row in enumerate(csv_reader):
             ro = row[0].split(chr(29))[0]
             print(ro)
-            print(df_row)
             df_row = pd.DataFrame([ro])
+            print(df_row)
             df_row.to_excel(
                 writer,
                 sheet_name='sheet1',
