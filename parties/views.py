@@ -16,15 +16,13 @@ def create_xls(request, item):
     if os.path.isfile(file_path_xls):
         os.remove(file_path_xls)
 
-    with open(party.report_party_file.path_full, mode="r", encoding="utf-8", newline='') as csv_file, \
+    with open(party.report_party_file.path_full, mode="r", encoding="utf-8") as csv_file, \
         pd.ExcelWriter(file_path_xls, engine="xlsxwriter") as writer:  
-        csv_reader = csv.reader(csv_file)
+        csv_reader = csv.reader(csv_file, delimiter = '\xa7')
         
         for index, row in enumerate(csv_reader):
             ro = row[0].split(chr(29))[0]
-            print(ro)
             df_row = pd.DataFrame([ro])
-            print(df_row)
             df_row.to_excel(
                 writer,
                 sheet_name='sheet1',
